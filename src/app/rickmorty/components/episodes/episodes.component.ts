@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { EpisodesService } from '../../services/episodes.service';
 
 @Component({
   selector: 'app-episodes',
@@ -7,5 +8,20 @@ import { Component } from '@angular/core';
   styleUrl: './episodes.component.css'
 })
 export class EpisodesComponent {
+  episodes: any[] = [];
+
+  private episodesService = inject(EpisodesService);
+
+  ngOnInit() {
+    this.episodesService.getCharacters().subscribe(response => {
+      this.episodes = response.results;
+    });
+  }
+
+  extractCharacterId(url: string): number {
+    const parts = url.split('/');
+    return Number(parts[parts.length - 1]);
+  }
+
 
 }

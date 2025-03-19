@@ -1,1 +1,22 @@
-<p>episodes works!</p>
+<div class="container mt-4">
+  <h1 class="text-center">Episodios</h1>
+  <div class="row">
+    @for (episode of episodes; track episode.id) {
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">{{ episode.name }}</h5>
+            <p class="card-text">
+              <strong>Fecha de emisión:</strong> {{ episode.air_date }} <br>
+              <strong>Episodio:</strong> {{ episode.episode }}
+            </p>
+            <h6 class="card-subtitle mb-2 text-muted">Personajes:</h6>
+            <div class="d-flex flex-wrap">
+              <app-collapse [characters]="episode.characters"></app-collapse>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

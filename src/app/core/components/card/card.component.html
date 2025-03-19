@@ -1,0 +1,17 @@
+<div class="card h-100 shadow-sm">
+  <!-- Imagen del personaje -->
+  <img [src]="character.image" class="card-img-top" [alt]="character.name">
+  <div class="card-body">
+    <!-- Nombre y estado -->
+    <h5 class="card-title">{{ character.name }}</h5>
+    <p class="card-text">
+        {{ character.status }}
+    </p>
+    <!-- Especie y género -->
+    <p class="card-text"><strong>Especie:</strong> {{ character.species }}</p>
+    <p class="card-text"><strong>Género:</strong> {{ character.gender }}</p>
+    <!-- Origen y ubicación -->
+    <p class="card-text"><strong>Origen:</strong> {{ character.origin.name }}</p>
+    <p class="card-text"><strong>Ubicación:</strong> {{ character.location.name }}</p>
+  </div>
+</div>
