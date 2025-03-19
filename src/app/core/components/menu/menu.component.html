@@ -1,19 +1,29 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg bg-dark">
+  <div class="container-fluid d-flex justify-content-between align-items-center">
+    <!-- Contenedor para Logo y Nombre -->
+    <div class="d-flex align-items-center">
+      <a class="navbar-brand d-flex align-items-center" routerLink="/">
+        <img src="logo.jfif" alt="Logo" width="80" height="80" class="rounded-5 me-2">
+        <span class="fw-bold lg-text">App RickyMorti</span>
+      </a>
+    </div>
+
+    <!-- Botón Toggle -->
+    <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
+    <!-- Menú de Navegación -->
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+          <a class="nav-link active text-white" routerLink="/">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/rickyMorti/characters">Personajes</a>
+          <a class="nav-link text-white" routerLink="/rickyMorti/characters">Personajes</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/rickyMorti/episodes">Episodios</a>
+          <a class="nav-link text-white" routerLink="/rickyMorti/episodes">Episodios</a>
         </li>
       </ul>
     </div>

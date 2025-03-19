@@ -1,3 +1,4 @@
+import { PagesModule } from './../pages/pages.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -7,7 +8,6 @@ import { CharactersComponent } from './components/characters/characters.componen
 import { EpisodesComponent } from './components/episodes/episodes.component';
 import { SearchLocationComponent } from './components/search-location/search-location.component';
 import { CoreModule } from "../core/core.module";
-
 
 @NgModule({
   declarations: [
@@ -19,7 +19,8 @@ import { CoreModule } from "../core/core.module";
     CommonModule,
     RickmortyRoutingModule,
     HttpClientModule,
-    CoreModule
+    CoreModule,
+    PagesModule
 ]
 })
 export class RickmortyModule { }
