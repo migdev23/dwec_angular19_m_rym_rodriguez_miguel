@@ -1,63 +1,67 @@
-  <h1>Episodios</h1>
-  <div class="row">
-    @for (episode of episodes; track episode.id) {
-      <div class="col-md-4 mb-4">
-        <div class="card shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title">{{ episode.name }}</h5>
-            <p class="card-text">
-              <strong>Fecha de emisión:</strong> {{ episode.air_date }} <br>
-              <strong>Episodio:</strong> {{ episode.episode }}
-            </p>
-            <h6 class="card-subtitle mb-2 text-muted">Personajes:</h6>
-            <div class="d-flex flex-wrap">
-              <app-collapse [characters]="episode.characters"></app-collapse>
-            </div>
+<h1>Episodios</h1>
+<div class="row">
+  @for (episode of episodes; track episode.id) {
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">{{ episode.name }}</h5>
+          <p class="card-text">
+            <strong>Fecha de emisión:</strong> {{ episode.air_date }} <br>
+            <strong>Episodio:</strong> {{ episode.episode }}
+          </p>
+          <h6 class="card-subtitle mb-2 text-muted">Personajes:</h6>
+          <div class="d-flex flex-wrap">
+            <app-collapse [characters]="episode.characters"></app-collapse>
+          </div>
 
-            <div>
-              @if(esEpisodioFavorito(episode.id)){
-                <button class="btn btn-danger" (click)="borrar(episode.id)">Eliminar de Favoritos</button>
-              }
-              @else{
-                <button class="btn bg-primary text-white" (click)="openModal(episode.id)">Añadir a Favoritos</button>
-              }
-            </div>
+          <div>
+            @if(esEpisodioFavorito(episode.id)){
+              <button class="btn btn-danger" (click)="borrar(episode.id)">Eliminar de Favoritos</button>
+            }
+            @else{
+              <button class="btn bg-primary text-white" (click)="openModal(episode.id)">Añadir a Favoritos</button>
+            }
+          </div>
 
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Título {{episodeSelected?.name}}</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <form>
-                      <div class="mb-3">
-                        <label for="puntuacion" class="form-label">Puntuación</label>
-                        <select class="form-select" id="puntuacion" [(ngModel)]="puntuacion" name="puntuacion">
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                        </select>
-                      </div>
-                      <div class="mb-3">
-                        <label for="observacion" class="form-label">Observación</label>
-                        <textarea class="form-control" id="observacion" [(ngModel)]="observacion" name="observacion"></textarea>
-                      </div>
-                    </form>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" (click)="guardar()">Añadir</button>
-                  </div>
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">{{episodeSelected?.name}}</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p class="text-danger">*Rellena los campos para añadirlo a favoritos*</p>
+                  <form #favoritoForm="ngForm">
+                    <div class="mb-3">
+                      <label for="puntuacion" class="form-label">Puntuación</label>
+                      <select class="form-select" id="puntuacion" [(ngModel)]="puntuacion" name="puntuacion" required>
+                        <option value="">Selecciona una puntuación</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                      </select>
+                      <div class="invalid-feedback">Por favor, selecciona una puntuación.</div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="observacion" class="form-label">Observación</label>
+                      <textarea class="form-control" id="observacion" [(ngModel)]="observacion" name="observacion" required minlength="5"></textarea>
+                      <div class="invalid-feedback">La observación debe tener al menos 5 caracteres.</div>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                  <button type="button" class="btn btn-primary" (click)="guardar()" [disabled]="!favoritoForm.form.valid">Añadir</button>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
-    }
-  </div>
+    </div>
+  }
+</div>
