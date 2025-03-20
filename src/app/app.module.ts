@@ -7,7 +7,6 @@ import { CoreModule } from './core/core.module';
 import { PagesModule } from './pages/pages.module';
 import { RickmortyModule } from './rickmorty/rickmorty.module';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +16,7 @@ import { RickmortyModule } from './rickmorty/rickmorty.module';
     AppRoutingModule,
     CoreModule,
     PagesModule,
-    RickmortyModule
+    RickmortyModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

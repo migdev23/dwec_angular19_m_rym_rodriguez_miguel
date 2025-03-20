@@ -7,7 +7,8 @@ import { CoreModule } from "../core/core.module";
 import { CardComponent } from './components/card/card.component';
 import { JumbotronComponent } from './components/jumbotron/jumbotron.component';
 import { CollapseComponent } from './components/collapse/collapse.component';
-
+import { LoginComponent } from './components/login/login.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,12 +16,14 @@ import { CollapseComponent } from './components/collapse/collapse.component';
     NotFoundComponent,
     CardComponent,
     JumbotronComponent,
-    CollapseComponent
+    CollapseComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
     PagesRoutingModule,
     CoreModule,
+    FormsModule
   ],
   exports:[CardComponent,CollapseComponent]
 })

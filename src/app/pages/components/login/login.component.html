@@ -1,0 +1,69 @@
+
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card-body">
+          <h2 class="card-title text-center mb-4">Login</h2>
+          <form (ngSubmit)="login()" #loginForm="ngForm">
+
+            <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <input
+                type="text"
+                id="username"
+                class="form-control"
+                [(ngModel)]="username"
+                name="username"
+                required
+                #usernameInput="ngModel"
+                [class.is-invalid]="usernameInput.invalid && usernameInput.touched"
+              >
+              <div *ngIf="usernameInput.invalid && usernameInput.touched" class="invalid-feedback">
+                Username is required.
+              </div>
+            </div>
+
+            <!-- Campo Password -->
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input
+                type="password"
+                id="password"
+                class="form-control"
+                [(ngModel)]="password"
+                name="password"
+                required
+                #passwordInput="ngModel"
+                [class.is-invalid]="passwordInput.invalid && passwordInput.touched"
+              >
+              <div *ngIf="passwordInput.invalid && passwordInput.touched" class="invalid-feedback">
+                Password is required.
+              </div>
+            </div>
+
+            <!-- Botón de Login -->
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">
+                Login
+              </button>
+            </div>
+
+            <!-- Mensaje de error -->
+            <p *ngIf="errorMessage" class="text-danger mt-3 text-center">{{ errorMessage }}</p>
+          </form>
+        </div>
+    </div>
+  </div>
+
+
+
+<!--
+Cada campo (username y password) tiene una etiqueta (label) y un input.
+
+Se usa [(ngModel)] para enlazar los valores de los campos con las propiedades del componente.
+
+Se agrega la clase is-invalid a los inputs cuando son inválidos y han sido tocados (touched). Esto muestra un borde rojo en los campos no válidos.
+
+Se muestra un mensaje de error debajo de cada campo si no se cumple la validación.
+
+
+-->
