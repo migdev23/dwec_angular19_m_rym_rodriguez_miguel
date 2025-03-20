@@ -1,0 +1,38 @@
+<h1>Mis Episodios Favoritos</h1>
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+  @for (favorito of favoritos; track favorito.id) {
+  <div class="col">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">{{ favorito.name }}</h5>
+        <p class="card-text">
+          <strong>Fecha de emisión:</strong> {{ favorito.air_date }}<br>
+          <strong>Episodio:</strong> {{ favorito.episode }}<br>
+          <strong>Observación:</strong> {{ favorito.observacion }}
+        </p>
+        <div class="mb-3">
+          <strong>Valoración:</strong>
+          <div class="rating">
+            @for (star of [1, 2, 3, 4, 5]; track star) {
+            <span class="star" [class.filled]="star <= favorito.valoracion">&#9733;</span>
+            }
+          </div>
+        </div>
+      </div>
+      <div class="card-footer bg-transparent border-top-0">
+        <div class="d-grid gap-2">
+          <button class="btn btn-outline-danger" (click)="eliminarFavorito(favorito.id)">
+            Eliminar de Favoritos
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+  @empty {
+  <div class="col-12 text-center">
+    <p class="text-muted">No tienes episodios favoritos.</p>
+  </div>
+  }
+</div>

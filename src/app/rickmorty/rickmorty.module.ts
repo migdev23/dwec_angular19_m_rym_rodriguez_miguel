@@ -8,6 +8,7 @@ import { CharactersComponent } from './components/characters/characters.componen
 import { EpisodesComponent } from './components/episodes/episodes.component';
 import { SearchLocationComponent } from './components/search-location/search-location.component';
 import { CoreModule } from "../core/core.module";
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CoreModule } from "../core/core.module";
     RickmortyRoutingModule,
     HttpClientModule,
     CoreModule,
-    PagesModule
+    PagesModule,
+    FormsModule
 ]
 })
 export class RickmortyModule { }

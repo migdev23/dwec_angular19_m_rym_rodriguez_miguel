@@ -7,14 +7,13 @@ import { AuthGuard } from '../auth/guards/auth.guard';
 import { NoAuthGuard } from '../auth/guards/noAuth.guard';
 
 const routes: Routes = [
-  {
-    path:'', component:HomeComponent,
-  },
+
+  {path:'', component:HomeComponent},
+
   { path: 'login', component: LoginComponent, canActivate:[NoAuthGuard]},
 
-  {
-    path:'404', component:NotFoundComponent,
-  }
+  {path:'404', component:NotFoundComponent}
+
 ];
 
 @NgModule({
